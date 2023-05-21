@@ -1,10 +1,12 @@
-import container.Box;
+package container;
+
 import entity.Apple;
 import entity.Fruit;
 import entity.Orange;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BoxTest {
 
