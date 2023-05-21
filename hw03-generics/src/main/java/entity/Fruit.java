@@ -1,7 +1,9 @@
+package entity;
+
 public class Fruit {
     private double weight;
 
-    Fruit(double weight) {
+    public Fruit(double weight) {
         this.weight = weight;
     }
 

@@ -1,5 +1,7 @@
+package entity;
+
 public class Orange extends Fruit{
-    Orange() {
+    public Orange() {
         super(2.0);
     }
 }

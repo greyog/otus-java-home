@@ -1,3 +1,7 @@
+package container;
+
+import entity.Fruit;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,7 @@ public class Box<T extends Fruit> {
         if (other == null) {
             return false;
         }
+        if (other.equals(this)) return true;
         return Math.abs(this.weight() - other.weight()) < EPSILON;
     }
 
@@ -28,6 +33,9 @@ public class Box<T extends Fruit> {
         if (consumer == null) {
             throw new IllegalArgumentException("Consumer should not be null");
         }
+
+        if (consumer.equals(this)) return;
+
         for (T f : this.contents) {
             consumer.add(f);
         }

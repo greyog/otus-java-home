@@ -1,3 +1,7 @@
+import container.Box;
+import entity.Apple;
+import entity.Fruit;
+import entity.Orange;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,6 +63,17 @@ class BoxTest {
     }
 
     @Test
+    void compareToSelfReturnsTrue() {
+        Box<Apple> appleBox = new Box<>();
+
+        for (int i = 0; i < 20; i++) {
+            appleBox.add(new Apple());
+        }
+
+        assertTrue(appleBox.compare(appleBox));
+    }
+
+    @Test
     void transferToValidBox() {
         Box<Apple> appleBox = new Box<>();
         Box<Fruit> fruitBox = new Box<>();
@@ -88,6 +103,22 @@ class BoxTest {
         assertEquals(new Apple().getWeight(),
                 appleBox.weight(), 0.001);
 
+
+    }
+
+    @Test
+    void transferToSelfResultsToSameWeight() {
+        Box<Apple> appleBox = new Box<>();
+
+        for (int i = 0; i < 20; i++) {
+            appleBox.add(new Apple());
+        }
+
+        double boxWeightBefore = appleBox.weight();
+
+        appleBox.transferTo(appleBox);
+
+        assertEquals(boxWeightBefore, appleBox.weight(), 0.001);
 
     }
 }
