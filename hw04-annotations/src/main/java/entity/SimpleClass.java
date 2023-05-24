@@ -15,6 +15,11 @@ public class SimpleClass {
     }
 
     public void iThrowSometimes() {
-        if(this.value != 123) throw new IllegalStateException("Someone changed my lovely value");
+        if(this.value != 123) throw new IllegalStateException("Someone changed my lovely value.");
+        System.out.println("Everything is alright.");
+    }
+
+    public void releaseTheSquirrel() {
+        System.out.println("The beast is gone away to forest.");
     }
 }
