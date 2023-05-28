@@ -30,13 +30,13 @@ public class ToStringProcessor extends AbstractProcessor {
             processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "Elements annotated with " + annotation.toString());
             processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, elements.toString());
             for (Element element : elements) {
-//                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE,
-//                        "Simple name "+element.getSimpleName());
-//                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE,
-//                        "Enclosing element "+element.getEnclosingElement());
-//                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE,
-//                        "Enclosed elements "+element.getEnclosedElements());
-//
+                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE,
+                        "Simple name "+element.getSimpleName());
+                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE,
+                        "Enclosing element "+element.getEnclosingElement());
+                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE,
+                        "Enclosed elements "+element.getEnclosedElements());
+
                 try {
                     writeToFile(element, annotation);
                 } catch (IOException e) {
@@ -63,19 +63,16 @@ public class ToStringProcessor extends AbstractProcessor {
             writer.println("// Created at " + LocalDateTime.now().toString() + " by " +
                     this.getClass().getCanonicalName());
             writer.println("package " + packageName +";");
+            writer.println("");
             writer.println("public class " +
                     element.getSimpleName() + annotation.getSimpleName() +
                     " extends " + element.getSimpleName() +
                     "{");
-            writer.println("public String toString() {");
-            writer.println(" return String.valueOf(42); ");
-
-//            element.getKind()
-
+            writer.println("    @Override");
+            writer.println("    public String toString() {");
+            writer.println("        return String.valueOf(42); ");
+            writer.println("    }");
             writer.println("}");
-            writer.println("}");
-
-            writer.close();
         }
     }
 }
