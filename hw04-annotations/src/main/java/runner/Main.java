@@ -5,10 +5,11 @@ import annotations.Before;
 import annotations.Test;
 import test.MyTestClass;
 
+import java.lang.annotation.Annotation;
+import java.lang.annotation.AnnotationTypeMismatchException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String... args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
@@ -17,14 +18,9 @@ public class Main {
 
     private static void runTestsFrom(Class<?> testClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Method[] allMethods = testClass.getDeclaredMethods();
-        List<Method> beforeMethods = new ArrayList<>();
-        List<Method> testMethods = new ArrayList<>();
-        List<Method> afterMethods = new ArrayList<>();
-        for (Method method : allMethods) {
-            if(method.isAnnotationPresent(Before.class)) beforeMethods.add(method);
-            else if (method.isAnnotationPresent(Test.class)) testMethods.add(method);
-            else if (method.isAnnotationPresent(After.class)) afterMethods.add(method);
-        }
+        List<Method> beforeMethods = getMethodsWithAnnotation(allMethods, Before.class, Test.class, After.class);
+        List<Method> testMethods = getMethodsWithAnnotation(allMethods, Test.class, After.class, Before.class);
+        List<Method> afterMethods = getMethodsWithAnnotation(allMethods, After.class, Before.class, Test.class);
 
         int totalTestsCount = testMethods.size();
         int passedTestsCount = 0;
@@ -59,6 +55,26 @@ public class Main {
         System.out.println("Failed tests: " + failedTestsCount);
         System.out.println("Time elapsed: " + totalTime + " ms");
 
+    }
+
+    @SafeVarargs
+    private static List<Method> getMethodsWithAnnotation(Method[] methods,
+                                                         Class<? extends Annotation> required,
+                                                         Class<? extends Annotation>... restricted) {
+        List<Method> result = Arrays.stream(methods).filter(method -> method.isAnnotationPresent(required)).toList();
+        for (Class<? extends Annotation> restr : restricted) {
+            List<Method> list = new ArrayList<>();
+            for (Method method : result) {
+                if (!method.isAnnotationPresent(restr)) {
+                    list.add(method);
+                } else {
+                    throw new IllegalArgumentException(String.format("Only one annotation allowed. " +
+                            "At method %s found annotations %s and %s.", method.getName(), required.getSimpleName(), restr.getSimpleName()));
+                }
+            }
+            result = list;
+        }
+        return result;
     }
 
 
