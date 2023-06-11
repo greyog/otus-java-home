@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 group 'org.example'
@@ -10,22 +9,19 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = 'runner.Demo'
-applicationDefaultJvmArgs = ['-javaagent:agent/build/libs/agent-1.0-SNAPSHOT.jar']
-
-run.dependsOn(':agent:jar' )
-
 jar {
     manifest {
         attributes(
-                'Main-Class' : 'runner.Demo'
+                'Agent-Class' : 'agent.MyLogAgent',
+                'PreMain-Class' : 'agent.MyLogAgent',
+                'Can-Redefine-Classes' : true,
+                'Can-Retransform-Classes' : true
         )
     }
 }
 
 dependencies {
     implementation project(':annotation')
-
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }

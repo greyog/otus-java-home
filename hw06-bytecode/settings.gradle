@@ -1,2 +1,4 @@
 rootProject.name = 'hw06-bytecode'
+include 'agent'
+include 'annotation'
 

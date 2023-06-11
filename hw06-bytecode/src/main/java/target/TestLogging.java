@@ -1,10 +1,10 @@
 package target;
 
-import annotation.Log;
+import annotation.MyLog;
 
 public class TestLogging {
 
-    @Log
+    @MyLog
     public void calculation(int param) {
         System.out.println("I've got param: " + param);
     }
