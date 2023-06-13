@@ -1,10 +1,8 @@
 package agent;
 
-import annotation.MyLog;
-import transformer.MyClassTransformer;
+import instrumentation.MyClassTransformer;
 
 import java.lang.instrument.Instrumentation;
-import java.util.Arrays;
 
 public class MyLogAgent {
     public static void premain(String agentArgs, Instrumentation inst) {

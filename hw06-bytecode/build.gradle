@@ -11,9 +11,9 @@ repositories {
 }
 
 mainClassName = 'runner.Demo'
-applicationDefaultJvmArgs = ['-javaagent:agent/build/libs/agent-1.0-SNAPSHOT.jar']
+applicationDefaultJvmArgs = ['-javaagent:agent/build/libs/agent-1.0-SNAPSHOT-all.jar']
 
-run.dependsOn(':agent:jar' )
+run.dependsOn(':agent:shadowJar' )
 
 jar {
     manifest {
