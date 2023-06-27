@@ -1,0 +1,35 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Agent-Class' : 'agent.MyLogAgent',
+                'PreMain-Class' : 'agent.MyLogAgent',
+                'Can-Redefine-Classes' : true,
+                'Can-Retransform-Classes' : true
+        )
+    }
+}
+
+dependencies {
+    implementation project(':annotation')
+
+    implementation 'org.javassist:javassist:3.29.2-GA'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

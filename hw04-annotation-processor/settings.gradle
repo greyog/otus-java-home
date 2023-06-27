@@ -1,0 +1,3 @@
+rootProject.name = 'hw04-annotation-processor'
+include 'annotation-processor'
+include 'annotation-user'
