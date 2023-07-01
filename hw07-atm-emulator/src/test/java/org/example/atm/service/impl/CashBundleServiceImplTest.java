@@ -22,7 +22,7 @@ class CashBundleServiceImplTest {
     }
 
     @Test
-    void add() {
+    void add_test() {
         CashBundle b1 = new CashBundle(Map.of(
                 NOTE_100, 1,
                 NOTE_500, 1,
@@ -43,7 +43,7 @@ class CashBundleServiceImplTest {
     }
 
     @Test
-    void subtract_valid_bundles_returns_proper_result() {
+    void subtract_valid_bundles_returns_proper_result_test() {
         CashBundle b1 = new CashBundle(Map.of(
                 NOTE_100, 1,
                 NOTE_500, 1,
@@ -64,7 +64,7 @@ class CashBundleServiceImplTest {
     }
 
     @Test
-    void subtract_greater_bundle_from_less_throws() {
+    void subtract_greater_bundle_from_less_throws_test() {
         CashBundle b1 = new CashBundle(Map.of(
                 NOTE_100, 1,
                 NOTE_500, 1,

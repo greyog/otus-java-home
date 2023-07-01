@@ -27,7 +27,7 @@ class AtmServiceImplTest {
     }
 
     @Test
-    void acceptCashBundle_total_amount_increases_on_input_bundle_amount() {
+    void acceptCashBundle_total_amount_increases_on_input_bundle_amount_test() {
         CashBundle cashBundle = new CashBundle(Map.of(
                 NOTE_100, 1,
                 NOTE_500, 1,
@@ -44,7 +44,7 @@ class AtmServiceImplTest {
     }
 
     @Test
-    void getTotalAmount_returns_exact_amount_of_initial_bundle() {
+    void getTotalAmount_returns_exact_amount_of_initial_bundle_test() {
         CashBundle cashBundle = new CashBundle(Map.of(
                 NOTE_100, 1,
                 NOTE_500, 1,
@@ -59,7 +59,7 @@ class AtmServiceImplTest {
     }
 
     @Test
-    void getCash_returns_proper_bundle_for_valid_requested_amount() {
+    void getCash_returns_proper_bundle_for_valid_requested_amount_test() {
         CashBundle bundle = atmServiceImpl.getCash(6600L);
 
         assertEquals(1, bundle.getNoteTypeCount(NOTE_5000));
@@ -69,12 +69,12 @@ class AtmServiceImplTest {
     }
 
     @Test
-    void getCash_throws_on_invalid_requested_amount() {
+    void getCash_throws_on_invalid_requested_amount_test() {
         assertThrows(IllegalArgumentException.class, () -> atmServiceImpl.getCash(5001));
     }
 
     @Test
-    void getCash_throws_on_too_big_requested_amount() {
+    void getCash_throws_on_too_big_requested_amount_test() {
         CashBundle cashBundle = new CashBundle(Map.of(
                 NOTE_100, 1,
                 NOTE_500, 1,
