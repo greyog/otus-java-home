@@ -1,6 +1,6 @@
-package service;
+package org.example.atm.service;
 
-import entity.CashBundle;
+import org.example.atm.entity.CashBundle;
 
 public interface AtmService {
     void acceptCashBundle(CashBundle cashBundle);

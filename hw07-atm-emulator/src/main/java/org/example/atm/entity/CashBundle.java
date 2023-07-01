@@ -1,4 +1,4 @@
-package entity;
+package org.example.atm.entity;
 
 public class CashBundle {
     private final int notes100;

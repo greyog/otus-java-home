@@ -1,8 +1,8 @@
-package service.impl;
+package org.example.atm.service.impl;
 
-import entity.CashBundle;
-import service.AtmService;
-import service.CashBundleService;
+import org.example.atm.entity.CashBundle;
+import org.example.atm.service.AtmService;
+import org.example.atm.service.CashBundleService;
 
 public class AtmServiceImpl implements AtmService {
     private CashBundle cashBundle;

@@ -1,9 +1,9 @@
-package service.impl;
+package org.example.atm.service.impl;
 
-import entity.CashBundle;
+import org.example.atm.entity.CashBundle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import service.CashBundleService;
+import org.example.atm.service.CashBundleService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

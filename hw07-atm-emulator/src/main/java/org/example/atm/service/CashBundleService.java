@@ -1,6 +1,6 @@
-package service;
+package org.example.atm.service;
 
-import entity.CashBundle;
+import org.example.atm.entity.CashBundle;
 
 public interface CashBundleService {
     CashBundle add(CashBundle bundle1, CashBundle bundle2);
