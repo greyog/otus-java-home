@@ -1,37 +1,24 @@
 package org.example.atm.service.impl;
 
+import lombok.AllArgsConstructor;
 import org.example.atm.entity.CashBundle;
 import org.example.atm.service.AtmService;
 import org.example.atm.service.CashBundleService;
 
+
+@AllArgsConstructor
 public class AtmServiceImpl implements AtmService {
+    private final CashBundleService cashBundleService;
     private CashBundle cashBundle;
-    private final CashBundleService bundleService;
-
-    public AtmServiceImpl(CashBundleService bundleService) {
-        this.bundleService = bundleService;
-        this.cashBundle = new CashBundle(100, 100, 100, 100);
-    }
-
-    public AtmServiceImpl(CashBundleService bundleService, CashBundle cashBundle) {
-        this.bundleService = bundleService;
-        if (cashBundle == null) {
-            cashBundle = new CashBundle(0, 0, 0, 0);
-        }
-        this.cashBundle = cashBundle;
-    }
 
     @Override
     public void acceptCashBundle(CashBundle inputBundle) {
-        this.cashBundle = bundleService.add(this.cashBundle, inputBundle);
+        this.cashBundle = cashBundleService.add(this.cashBundle, inputBundle);
     }
 
     @Override
     public int getTotalAmount() {
-        return cashBundle.getNotes100() * 100 +
-                cashBundle.getNotes500() * 500 +
-                cashBundle.getNotes1000() * 1000 +
-                cashBundle.getNotes5000() * 5000;
+        return cashBundle.getNotes100() * 100 + cashBundle.getNotes500() * 500 + cashBundle.getNotes1000() * 1000 + cashBundle.getNotes5000() * 5000;
     }
 
     @Override
@@ -50,7 +37,7 @@ public class AtmServiceImpl implements AtmService {
 
         if (amount == 0) {
             CashBundle resultBundle = new CashBundle(notes100, notes500, notes1000, notes5000);
-            this.cashBundle = bundleService.subtract(this.cashBundle, resultBundle);
+            this.cashBundle = cashBundleService.subtract(this.cashBundle, resultBundle);
             return resultBundle;
         }
 

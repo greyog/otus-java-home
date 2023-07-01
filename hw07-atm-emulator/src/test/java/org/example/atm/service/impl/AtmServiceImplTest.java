@@ -14,7 +14,8 @@ class AtmServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        atmServiceImpl = new AtmServiceImpl(defaultBundleService);
+
+//        atmServiceImpl = new AtmServiceImpl(defaultBundleService);
     }
 
     @Test
