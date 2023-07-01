@@ -1,14 +1,15 @@
 package org.example.atm.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 import java.util.Map;
 
 @AllArgsConstructor
-@Getter
 public class CashBundle {
 
     private final Map<NoteType, Integer> notes;
 
+    public int getNoteTypeCount(NoteType noteType) {
+        return notes.getOrDefault(noteType, 0);
+    }
 }

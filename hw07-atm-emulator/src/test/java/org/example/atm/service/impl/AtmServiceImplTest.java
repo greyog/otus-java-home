@@ -1,10 +1,14 @@
 package org.example.atm.service.impl;
 
 import org.example.atm.entity.CashBundle;
+import org.example.atm.entity.NoteType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.example.atm.service.CashBundleService;
 
+import java.util.Map;
+
+import static org.example.atm.entity.NoteType.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AtmServiceImplTest {
@@ -14,17 +18,25 @@ class AtmServiceImplTest {
 
     @BeforeEach
     void setUp() {
-
-//        atmServiceImpl = new AtmServiceImpl(defaultBundleService);
+        CashBundle cashBundle = new CashBundle(Map.of(
+                NOTE_100, 100,
+                NOTE_500, 100,
+                NOTE_1000, 100,
+                NOTE_5000, 100));
+        atmServiceImpl = new AtmServiceImpl(defaultBundleService, cashBundle);
     }
 
     @Test
     void acceptCashBundle_total_amount_increases_on_input_bundle_amount() {
-        CashBundle bundle = new CashBundle(1, 1, 1, 1);
+        CashBundle cashBundle = new CashBundle(Map.of(
+                NOTE_100, 1,
+                NOTE_500, 1,
+                NOTE_1000, 1,
+                NOTE_5000, 1));
         int inputBundleAmount = 100 + 500 + 1000 + 5000;
         int beforeAtmAmount = atmServiceImpl.getTotalAmount();
 
-        atmServiceImpl.acceptCashBundle(bundle);
+        atmServiceImpl.acceptCashBundle(cashBundle);
 
         int resultAtmAmount = atmServiceImpl.getTotalAmount();
 
@@ -33,9 +45,13 @@ class AtmServiceImplTest {
 
     @Test
     void getTotalAmount_returns_exact_amount_of_initial_bundle() {
-        CashBundle bundle = new CashBundle(1, 1, 1, 1);
+        CashBundle cashBundle = new CashBundle(Map.of(
+                NOTE_100, 1,
+                NOTE_500, 1,
+                NOTE_1000, 1,
+                NOTE_5000, 1));
         int inputBundleAmount = 100 + 500 + 1000 + 5000;
-        AtmServiceImpl testAtmService = new AtmServiceImpl(defaultBundleService, bundle);
+        AtmServiceImpl testAtmService = new AtmServiceImpl(defaultBundleService, cashBundle);
 
         int atmAmount = testAtmService.getTotalAmount();
 
@@ -44,12 +60,12 @@ class AtmServiceImplTest {
 
     @Test
     void getCash_returns_proper_bundle_for_valid_requested_amount() {
-        CashBundle bundle = atmServiceImpl.getCash(6600);
+        CashBundle bundle = atmServiceImpl.getCash(6600L);
 
-        assertEquals(1, bundle.getNotes5000());
-        assertEquals(1, bundle.getNotes1000());
-        assertEquals(1, bundle.getNotes500());
-        assertEquals(1, bundle.getNotes100());
+        assertEquals(1, bundle.getNoteTypeCount(NOTE_5000));
+        assertEquals(1, bundle.getNoteTypeCount(NOTE_1000));
+        assertEquals(1, bundle.getNoteTypeCount(NOTE_500));
+        assertEquals(1, bundle.getNoteTypeCount(NOTE_100));
     }
 
     @Test
@@ -59,9 +75,13 @@ class AtmServiceImplTest {
 
     @Test
     void getCash_throws_on_too_big_requested_amount() {
-        CashBundle bundle = new CashBundle(1, 1, 1, 1);
+        CashBundle cashBundle = new CashBundle(Map.of(
+                NOTE_100, 1,
+                NOTE_500, 1,
+                NOTE_1000, 1,
+                NOTE_5000, 1));
         int inputBundleAmount = 100 + 500 + 1000 + 5000;
-        AtmServiceImpl testAtmService = new AtmServiceImpl(defaultBundleService, bundle);
+        AtmServiceImpl testAtmService = new AtmServiceImpl(defaultBundleService, cashBundle);
 
         assertThrows(IllegalArgumentException.class,
                 () -> testAtmService.getCash(inputBundleAmount + 200));

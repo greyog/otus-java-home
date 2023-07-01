@@ -30,9 +30,9 @@ public class AtmServiceImpl implements AtmService {
         Map<NoteType, Integer> result = new HashMap<>();
 
         for (NoteType noteType : NoteType.getDescendingValues()) {
-            int bundleNoteCount = cashBundle.getNotes().getOrDefault(noteType, 0);
+            int bundleNoteCount = cashBundle.getNoteTypeCount(noteType);
             int resultNoteCount = (int) Math.min(amount / noteType.getAmount().longValue(), bundleNoteCount);
-            amount = amount - bundleNoteCount * noteType.getAmount().longValue();
+            amount = amount - resultNoteCount * noteType.getAmount().longValue();
             result.put(noteType, resultNoteCount);
         }
 
