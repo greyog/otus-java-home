@@ -8,6 +8,6 @@ public interface AtmService {
 
     int getTotalAmount();
 
-    CashBundle getCash(int amount);
+    CashBundle getCash(long amount);
 
 }

@@ -9,6 +9,6 @@ import java.util.Map;
 @Getter
 public class CashBundle {
 
-    private final Map<CashType, Integer> notes;
+    private final Map<NoteType, Integer> notes;
 
 }
