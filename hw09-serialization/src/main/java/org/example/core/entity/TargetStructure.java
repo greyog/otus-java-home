@@ -3,9 +3,11 @@ package org.example.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.Builder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.opencsv.bean.CsvDate;
 import lombok.Data;
 import org.example.core.util.MessageSendDateDeserializer;
+import org.example.core.util.MessageSendDateSerializer;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -19,7 +21,6 @@ import java.time.LocalDateTime;
 // с группировкой по полю <chat_sessions.messages.belong_number>
 // и сортировкой от более старых сообщений к более новым
 @Data
-@Builder
 public class TargetStructure implements Serializable {
 
     @JsonProperty("chat_identifier")
@@ -33,6 +34,8 @@ public class TargetStructure implements Serializable {
 
     @JsonProperty("send_date")
     @JsonDeserialize(using = MessageSendDateDeserializer.class)
+    @JsonSerialize(using = MessageSendDateSerializer.class)
+    @CsvDate
     private LocalDateTime sendDate;
 
     private String text;

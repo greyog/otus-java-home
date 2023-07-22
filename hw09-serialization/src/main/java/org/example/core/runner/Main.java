@@ -1,27 +1,32 @@
 package org.example.core.runner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.core.arch.ConvertedFileHandler;
+import org.example.core.arch.impl.CsvFileHandler;
 import org.example.core.entity.Root;
 import org.example.core.util.DataConverter;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
+import java.net.URISyntaxException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        File file = new File(Objects.requireNonNull(Main.class.getClassLoader().getResource("sms-256866-480df9.json"))
-                .getFile());
-        ObjectMapper om = new ObjectMapper();
-        Root root = om.readValue(file, Root.class);
+    private static final String FILENAME = "converted";
 
-//        System.out.println(root);
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        var rawData = ClassLoader.getSystemResource("sms-256866-480df9.json");
+        var objectMapper = new ObjectMapper();
+        var root = objectMapper.readValue(rawData, Root.class);
 
-        var converted = DataConverter.convert(root);
-        System.out.println(converted);
-//todo add localdatetime serializer
-        System.out.println(om.writeValueAsString(converted));
+        var convertedData = DataConverter.convert(root);
+        System.out.println(convertedData);
+        System.out.println("-----------------------------------------------------------------------------------------");
+//        ConvertedFileHandler fileHandler = new JsonFileHandler();
+//        ConvertedFileHandler fileHandler = new XmlFileHandler();
+        ConvertedFileHandler fileHandler = new CsvFileHandler();
 
+        fileHandler.writeToFile(convertedData, FILENAME);
+
+        System.out.println(fileHandler.readFromFile(FILENAME));
     }
 }

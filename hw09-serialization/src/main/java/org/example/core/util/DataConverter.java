@@ -13,20 +13,20 @@ public class DataConverter {
     public static List<TargetStructure> convert(Root input) {
         List<TargetStructure> result = new ArrayList<>();
         for (ChatSession chatSession : input.getChatSessions()) {
-            var targetStructureBuilder = TargetStructure.builder()
-                    .chatIdentifier(chatSession.getChatIdentifier());
             for (Message message : chatSession.getMessages()) {
-                targetStructureBuilder.belongNumber(message.getBelongNumber());
-                targetStructureBuilder.sendDate(message.getSendDate());
-                targetStructureBuilder.text(message.getText());
+                var targetStructure = new TargetStructure();
+                targetStructure.setChatIdentifier(chatSession.getChatIdentifier());
+                targetStructure.setBelongNumber(message.getBelongNumber());
+                targetStructure.setSendDate(message.getSendDate());
+                targetStructure.setText(message.getText());
                 String memberLast = chatSession.getMembers().stream()
                         .filter(member -> member.getHandleId() == member.getHandleId())
                         .map(Member::getLast)
                         .findFirst()
                         .orElse("");
-                targetStructureBuilder.memberLast(memberLast);
+                targetStructure.setMemberLast(memberLast);
 
-                result.add(targetStructureBuilder.build());
+                result.add(targetStructure);
             }
         }
         result.sort(Comparator.comparing(TargetStructure::getSendDate));
