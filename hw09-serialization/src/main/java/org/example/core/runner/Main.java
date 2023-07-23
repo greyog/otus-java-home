@@ -1,8 +1,8 @@
 package org.example.core.runner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.core.arch.ConvertedFileHandler;
-import org.example.core.arch.impl.CsvFileHandler;
+import org.example.core.arch.FileHandlerService;
+import org.example.core.arch.impl.JavaFileHandler;
 import org.example.core.entity.Root;
 import org.example.core.util.DataConverter;
 
@@ -23,7 +23,10 @@ public class Main {
         System.out.println("-----------------------------------------------------------------------------------------");
 //        ConvertedFileHandler fileHandler = new JsonFileHandler();
 //        ConvertedFileHandler fileHandler = new XmlFileHandler();
-        ConvertedFileHandler fileHandler = new CsvFileHandler();
+//        ConvertedFileHandler fileHandler = new CsvFileHandler();
+//        FileHandlerService fileHandler = new YamlJacksonFileHandler();
+//        FileHandlerService fileHandler = new ProtobufFileHandler();
+        FileHandlerService fileHandler = new JavaFileHandler();
 
         fileHandler.writeToFile(convertedData, FILENAME);
 

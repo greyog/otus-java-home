@@ -5,7 +5,7 @@ import org.example.core.entity.TargetStructure;
 import java.io.IOException;
 import java.util.List;
 
-public interface ConvertedFileHandler {
+public interface FileHandlerService {
 
     void writeToFile(List<TargetStructure> data, String fileName) throws IOException;
 

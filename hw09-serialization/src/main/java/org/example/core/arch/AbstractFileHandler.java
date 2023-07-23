@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-public abstract class AbstractFileHandler implements ConvertedFileHandler {
+public abstract class AbstractFileHandler implements FileHandlerService {
 
     private static final String SEPARATOR = File.separator;
     private static final String OUT_DIRECTORY = "out";

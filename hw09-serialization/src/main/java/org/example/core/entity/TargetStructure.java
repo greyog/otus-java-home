@@ -9,6 +9,7 @@ import lombok.Data;
 import org.example.core.util.MessageSendDateDeserializer;
 import org.example.core.util.MessageSendDateSerializer;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -22,6 +23,8 @@ import java.time.LocalDateTime;
 // и сортировкой от более старых сообщений к более новым
 @Data
 public class TargetStructure implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @JsonProperty("chat_identifier")
     private String chatIdentifier;
