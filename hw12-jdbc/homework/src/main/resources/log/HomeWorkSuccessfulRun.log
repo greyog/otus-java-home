@@ -1,0 +1,221 @@
+13:15:33: Executing ':homework:HomeWork.main()'...
+
+
+> Configure project :
+Hello world!
+
+> Task :demo:compileJava UP-TO-DATE
+> Task :demo:processResources
+> Task :demo:classes
+> Task :demo:jar
+> Task :homework:compileJava UP-TO-DATE
+> Task :homework:processResources
+> Task :homework:classes
+
+> Task :homework:HomeWork.main()
+13:15:35.024 [main] DEBUG com.zaxxer.hikari.HikariConfig - DemoHiPool - configuration:
+13:15:35.044 [main] DEBUG com.zaxxer.hikari.HikariConfig - allowPoolSuspension................................false
+13:15:35.045 [main] DEBUG com.zaxxer.hikari.HikariConfig - autoCommit................................false
+13:15:35.045 [main] DEBUG com.zaxxer.hikari.HikariConfig - catalog................................none
+13:15:35.046 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionInitSql................................none
+13:15:35.046 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTestQuery................................none
+13:15:35.046 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTimeout................................3000
+13:15:35.047 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSource................................none
+13:15:35.047 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceClassName................................none
+13:15:35.048 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceJNDI................................none
+13:15:35.050 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceProperties................................{password=<masked>, prepStmtCacheSqlLimit=2048, cachePrepStmts=true, prepStmtCacheSize=250}
+13:15:35.050 [main] DEBUG com.zaxxer.hikari.HikariConfig - driverClassName................................none
+13:15:35.050 [main] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverrideClassName................................none
+13:15:35.050 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckProperties................................{}
+13:15:35.050 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckRegistry................................none
+13:15:35.050 [main] DEBUG com.zaxxer.hikari.HikariConfig - idleTimeout................................60000
+13:15:35.051 [main] DEBUG com.zaxxer.hikari.HikariConfig - initializationFailTimeout................................1
+13:15:35.051 [main] DEBUG com.zaxxer.hikari.HikariConfig - isolateInternalQueries................................false
+13:15:35.052 [main] DEBUG com.zaxxer.hikari.HikariConfig - jdbcUrl................................jdbc:postgresql://localhost:5430/demoDB
+13:15:35.052 [main] DEBUG com.zaxxer.hikari.HikariConfig - keepaliveTime................................0
+13:15:35.052 [main] DEBUG com.zaxxer.hikari.HikariConfig - leakDetectionThreshold................................0
+13:15:35.052 [main] DEBUG com.zaxxer.hikari.HikariConfig - maxLifetime................................600000
+13:15:35.052 [main] DEBUG com.zaxxer.hikari.HikariConfig - maximumPoolSize................................10
+13:15:35.052 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricRegistry................................none
+13:15:35.053 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricsTrackerFactory................................none
+13:15:35.053 [main] DEBUG com.zaxxer.hikari.HikariConfig - minimumIdle................................5
+13:15:35.053 [main] DEBUG com.zaxxer.hikari.HikariConfig - password................................<masked>
+13:15:35.053 [main] DEBUG com.zaxxer.hikari.HikariConfig - poolName................................"DemoHiPool"
+13:15:35.053 [main] DEBUG com.zaxxer.hikari.HikariConfig - readOnly................................false
+13:15:35.054 [main] DEBUG com.zaxxer.hikari.HikariConfig - registerMbeans................................true
+13:15:35.054 [main] DEBUG com.zaxxer.hikari.HikariConfig - scheduledExecutor................................none
+13:15:35.054 [main] DEBUG com.zaxxer.hikari.HikariConfig - schema................................none
+13:15:35.054 [main] DEBUG com.zaxxer.hikari.HikariConfig - threadFactory................................internal
+13:15:35.054 [main] DEBUG com.zaxxer.hikari.HikariConfig - transactionIsolation................................default
+13:15:35.055 [main] DEBUG com.zaxxer.hikari.HikariConfig - username................................"usr"
+13:15:35.055 [main] DEBUG com.zaxxer.hikari.HikariConfig - validationTimeout................................5000
+13:15:35.057 [main] INFO com.zaxxer.hikari.HikariDataSource - DemoHiPool - Starting...
+13:15:35.104 [main] DEBUG com.zaxxer.hikari.util.DriverDataSource - Loaded driver with class name org.postgresql.Driver for jdbcUrl=jdbc:postgresql://localhost:5430/demoDB
+13:15:35.336 [main] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - Added connection org.postgresql.jdbc.PgConnection@2173f6d9
+13:15:35.469 [main] INFO com.zaxxer.hikari.HikariDataSource - DemoHiPool - Start completed.
+13:15:35.469 [main] INFO ru.otus.HomeWork - db migration started...
+13:15:35.533 [main] INFO org.flywaydb.core.internal.license.VersionPrinter - Flyway Community Edition 8.5.13 by Redgate
+13:15:35.533 [main] INFO org.flywaydb.core.internal.license.VersionPrinter - See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#8.5.13
+13:15:35.533 [main] INFO org.flywaydb.core.internal.license.VersionPrinter -
+13:15:35.535 [main] DEBUG org.flywaydb.core.internal.util.FeatureDetector - AWS SDK available: false
+13:15:35.535 [main] DEBUG org.flywaydb.core.internal.util.FeatureDetector - Google Cloud Storage available: false
+13:15:35.535 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/callback' ...
+13:15:35.535 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Determining location urls for classpath:db/callback using ClassLoader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 ...
+13:15:35.535 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Unable to resolve location classpath:db/callback.
+13:15:35.535 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' ...
+13:15:35.536 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Determining location urls for classpath:db/migration using ClassLoader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 ...
+13:15:35.538 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Scanning URL: file:/home/greyog/Projects/otus-java-home/hw12-jdbc/homework/build/resources/main/db/migration
+13:15:35.539 [main] DEBUG org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+13:15:35.540 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: /home/greyog/Projects/otus-java-home/hw12-jdbc/homework/build/resources/main/
+13:15:35.540 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.FileSystemClassPathLocationScanner - Scanning for resources in path: /home/greyog/Projects/otus-java-home/hw12-jdbc/homework/build/resources/main/db/migration (db/migration)
+13:15:35.541 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Scanning URL: jar:file:/home/greyog/Projects/otus-java-home/hw12-jdbc/demo/build/libs/demo.jar!/db/migration
+13:15:35.541 [main] DEBUG org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+13:15:35.543 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Found resource: db/migration/
+13:15:35.543 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1__initial_schema.sql
+13:15:35.543 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1__initial_schema.sql
+13:15:35.543 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Found resource: db/migration/V2__add_manager.sql
+13:15:35.543 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Found resource: db/migration/V3__alter_manager.sql
+13:15:35.543 [main] DEBUG org.flywaydb.core.internal.scanner.classpath.ClassPathScanner - Scanning for classes at classpath:db/migration
+13:15:35.545 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/ (filename: )
+13:15:35.546 [main] DEBUG org.flywaydb.core.internal.resource.ResourceNameValidator - Validating V1__initial_schema.sql
+13:15:35.546 [main] DEBUG org.flywaydb.core.internal.resource.ResourceNameValidator - Validating V1__initial_schema.sql
+13:15:35.546 [main] DEBUG org.flywaydb.core.internal.resource.ResourceNameValidator - Validating V2__add_manager.sql
+13:15:35.546 [main] DEBUG org.flywaydb.core.internal.resource.ResourceNameValidator - Validating V3__alter_manager.sql
+13:15:35.568 [main] INFO org.flywaydb.core.internal.database.base.BaseDatabaseType - Database: jdbc:postgresql://localhost:5430/demoDB (PostgreSQL 13.11)
+13:15:35.568 [main] DEBUG org.flywaydb.core.internal.database.base.BaseDatabaseType - Driver  : PostgreSQL JDBC Driver 42.3.6
+13:15:35.569 [DemoHiPool housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - Before cleanup stats (total=1, active=1, idle=0, waiting=0)
+13:15:35.570 [DemoHiPool housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - After cleanup  stats (total=1, active=1, idle=0, waiting=0)
+13:15:35.572 [main] DEBUG org.flywaydb.core.FlywayExecutor - DDL Transactions Supported: true
+13:15:35.574 [main] DEBUG org.flywaydb.core.internal.schemahistory.SchemaHistoryFactory - Schemas:
+13:15:35.575 [main] DEBUG org.flywaydb.core.internal.schemahistory.SchemaHistoryFactory - Default schema: null
+13:15:35.579 [DemoHiPool connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - Added connection org.postgresql.jdbc.PgConnection@14c334e2
+13:15:35.588 [main] DEBUG org.flywaydb.core.internal.callback.SqlScriptCallbackFactory - Scanning for SQL callbacks ...
+13:15:35.588 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/ (filename: )
+13:15:35.588 [DemoHiPool connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - Added connection org.postgresql.jdbc.PgConnection@1a04d80a
+13:15:35.599 [DemoHiPool connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - Added connection org.postgresql.jdbc.PgConnection@1e3b5f92
+13:15:35.602 [main] DEBUG org.flywaydb.core.internal.command.DbValidate - Validating migrations ...
+13:15:35.606 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/ (filename: )
+13:15:35.610 [DemoHiPool connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - Added connection org.postgresql.jdbc.PgConnection@5b39d231
+13:15:35.619 [DemoHiPool connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - Added connection org.postgresql.jdbc.PgConnection@56d09990
+13:15:35.619 [DemoHiPool connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - DemoHiPool - After adding stats (total=6, active=1, idle=5, waiting=0)
+13:15:35.620 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/V1__initial_schema.sql (filename: V1__initial_schema.sql)
+13:15:35.620 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/V1__initial_schema.sql (filename: V1__initial_schema.sql)
+13:15:35.620 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/V2__add_manager.sql (filename: V2__add_manager.sql)
+13:15:35.620 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/ (filename: )
+13:15:35.620 [main] DEBUG org.flywaydb.core.internal.scanner.Scanner - Filtering out resource: db/migration/V3__alter_manager.sql (filename: V3__alter_manager.sql)
+13:15:35.629 [main] INFO org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.026s)
+13:15:35.740 [main] DEBUG org.flywaydb.core.internal.command.DbSchemas - Skipping creation of existing schema: "public"
+13:15:35.746 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Creating Schema History table "public"."flyway_schema_history" ...
+13:15:35.749 [main] DEBUG org.flywaydb.core.internal.parser.Parser - Parsing  ...
+13:15:35.763 [main] DEBUG org.flywaydb.core.internal.sqlscript.ParserSqlScript - Found statement at line 1: CREATE TABLE "public"."flyway_schema_history" (
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50),
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INTEGER,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT now(),
+    "execution_time" INTEGER NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+13:15:35.764 [main] DEBUG org.flywaydb.core.internal.sqlscript.ParserSqlScript - Found statement at line 13: ALTER TABLE "public"."flyway_schema_history" ADD CONSTRAINT "flyway_schema_history_pk" PRIMARY KEY ("installed_rank")
+13:15:35.764 [main] DEBUG org.flywaydb.core.internal.sqlscript.ParserSqlScript - Found statement at line 14: CREATE INDEX "flyway_schema_history_s_idx" ON "public"."flyway_schema_history" ("success")
+13:15:35.764 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - Executing SQL: CREATE TABLE "public"."flyway_schema_history" (
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50),
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INTEGER,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT now(),
+    "execution_time" INTEGER NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+13:15:35.773 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - 0 rows affected
+13:15:35.773 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - Executing SQL: ALTER TABLE "public"."flyway_schema_history" ADD CONSTRAINT "flyway_schema_history_pk" PRIMARY KEY ("installed_rank")
+13:15:35.779 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - 0 rows affected
+13:15:35.779 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - Executing SQL: CREATE INDEX "flyway_schema_history_s_idx" ON "public"."flyway_schema_history" ("success")
+13:15:35.784 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - 0 rows affected
+13:15:35.784 [main] DEBUG org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Created Schema History table "public"."flyway_schema_history"
+13:15:35.800 [main] INFO org.flywaydb.core.internal.command.DbMigrate - Current version of schema "public": << Empty Schema >>
+13:15:35.800 [main] DEBUG org.flywaydb.core.internal.parser.Parser - Parsing V1__initial_schema.sql ...
+13:15:35.805 [main] DEBUG org.flywaydb.core.internal.sqlscript.ParserSqlScript - Found statement at line 1: create table test
+(
+    id   int,
+    name varchar(50)
+)
+13:15:35.805 [main] DEBUG org.flywaydb.core.internal.sqlscript.ParserSqlScript - Found statement at line 6: create table client
+(
+    id   bigserial not null primary key,
+    name varchar(50)
+)
+13:15:35.808 [main] DEBUG org.flywaydb.core.internal.command.DbMigrate - Starting migration of schema "public" to version "1 - initial schema" ...
+13:15:35.809 [main] INFO org.flywaydb.core.internal.command.DbMigrate - Migrating schema "public" to version "1 - initial schema"
+13:15:35.811 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - Executing SQL: create table test
+(
+    id   int,
+    name varchar(50)
+)
+13:15:35.813 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - 0 rows affected
+13:15:35.813 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - Executing SQL: create table client
+(
+    id   bigserial not null primary key,
+    name varchar(50)
+)
+13:15:35.818 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - 0 rows affected
+13:15:35.818 [main] DEBUG org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "public" to version "1 - initial schema"
+13:15:35.825 [main] DEBUG org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Schema History table "public"."flyway_schema_history" successfully updated to reflect changes
+13:15:35.834 [main] DEBUG org.flywaydb.core.internal.parser.Parser - Parsing V2__add_manager.sql ...
+13:15:35.837 [main] DEBUG org.flywaydb.core.internal.sqlscript.ParserSqlScript - Found statement at line 1: create table manager
+(
+    no   bigserial not null primary key,
+    label varchar(50),
+    param varchar(50)
+)
+13:15:35.837 [main] DEBUG org.flywaydb.core.internal.command.DbMigrate - Starting migration of schema "public" to version "2 - add manager" ...
+13:15:35.839 [main] INFO org.flywaydb.core.internal.command.DbMigrate - Migrating schema "public" to version "2 - add manager"
+13:15:35.839 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - Executing SQL: create table manager
+(
+    no   bigserial not null primary key,
+    label varchar(50),
+    param varchar(50)
+)
+13:15:35.844 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - 0 rows affected
+13:15:35.844 [main] DEBUG org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "public" to version "2 - add manager"
+13:15:35.847 [main] DEBUG org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Schema History table "public"."flyway_schema_history" successfully updated to reflect changes
+13:15:35.853 [main] DEBUG org.flywaydb.core.internal.parser.Parser - Parsing V3__alter_manager.sql ...
+13:15:35.856 [main] DEBUG org.flywaydb.core.internal.sqlscript.ParserSqlScript - Found statement at line 1: ALTER TABLE manager RENAME COLUMN param TO param1
+13:15:35.856 [main] DEBUG org.flywaydb.core.internal.command.DbMigrate - Starting migration of schema "public" to version "3 - alter manager" ...
+13:15:35.858 [main] INFO org.flywaydb.core.internal.command.DbMigrate - Migrating schema "public" to version "3 - alter manager"
+13:15:35.858 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - Executing SQL: ALTER TABLE manager RENAME COLUMN param TO param1
+13:15:35.859 [main] DEBUG org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor - 0 rows affected
+13:15:35.859 [main] DEBUG org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "public" to version "3 - alter manager"
+13:15:35.862 [main] DEBUG org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Schema History table "public"."flyway_schema_history" successfully updated to reflect changes
+13:15:35.869 [main] INFO org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.077s)
+13:15:35.891 [main] DEBUG org.flywaydb.core.FlywayExecutor - Memory usage: 10 of 118M
+13:15:35.891 [main] INFO ru.otus.HomeWork - db migration finished.
+13:15:35.891 [main] INFO ru.otus.HomeWork - ***
+insert into Client( name ) values ( ? ) | params: [dbServiceFirst]
+13:15:35.904 [main] INFO ru.otus.crm.service.DbServiceClientImpl - created client: Client{id=1, name='dbServiceFirst'}
+insert into Client( name ) values ( ? ) | params: [dbServiceSecond]
+13:15:35.908 [main] INFO ru.otus.crm.service.DbServiceClientImpl - created client: Client{id=2, name='dbServiceSecond'}
+13:15:35.913 [main] INFO ru.otus.crm.service.DbServiceClientImpl - client: Optional[Client{id=2, name='dbServiceSecond'}]
+13:15:35.914 [main] INFO ru.otus.HomeWork - clientSecondSelected:Client{id=2, name='dbServiceSecond'}
+insert into Manager( label, param1 ) values ( ?, ? ) | params: [ManagerFirst, null]
+13:15:35.917 [main] INFO ru.otus.crm.service.DbServiceManagerImpl - created manager: Manager{no=1, label='ManagerFirst'}
+insert into Manager( label, param1 ) values ( ?, ? ) | params: [ManagerSecond, null]
+13:15:35.920 [main] INFO ru.otus.crm.service.DbServiceManagerImpl - created manager: Manager{no=2, label='ManagerSecond'}
+13:15:35.923 [main] INFO ru.otus.crm.service.DbServiceManagerImpl - manager: Optional[Manager{no=2, label='ManagerSecond'}]
+13:15:35.924 [main] INFO ru.otus.HomeWork - managerSecondSelected:Manager{no=2, label='ManagerSecond'}
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/8.1.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 2s
+6 actionable tasks: 4 executed, 2 up-to-date
+13:15:35: Execution finished ':homework:HomeWork.main()'.

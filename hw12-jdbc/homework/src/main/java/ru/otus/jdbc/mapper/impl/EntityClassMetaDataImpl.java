@@ -18,13 +18,13 @@ public class EntityClassMetaDataImpl<T> implements EntityClassMetaData<T> {
 
     @Override
     public String getName() {
-        return clientClass.getName();
+        return clientClass.getSimpleName();
     }
 
     @Override
-    public Constructor<T> getConstructor() {
+    public Constructor<T> getConstructor(Class<?>... paramTypes) {
         try {
-            return clientClass.getConstructor();
+            return clientClass.getConstructor(paramTypes);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
@@ -33,7 +33,7 @@ public class EntityClassMetaDataImpl<T> implements EntityClassMetaData<T> {
 
     @Override
     public Field getIdField() {
-        return Arrays.stream(clientClass.getFields())
+        return Arrays.stream(clientClass.getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(Id.class))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
@@ -41,13 +41,13 @@ public class EntityClassMetaDataImpl<T> implements EntityClassMetaData<T> {
 
     @Override
     public List<Field> getAllFields() {
-        return Arrays.stream(clientClass.getFields())
+        return Arrays.stream(clientClass.getDeclaredFields())
                 .toList();
     }
 
     @Override
     public List<Field> getFieldsWithoutId() {
-        return Arrays.stream(clientClass.getFields())
+        return Arrays.stream(clientClass.getDeclaredFields())
                 .filter(field -> !field.isAnnotationPresent(Id.class))
                 .toList();
     }

@@ -34,19 +34,25 @@ public class EntitySQLMetaDataImpl<T> implements EntitySQLMetaData {
 
     @Override
     public String getInsertSql() {
-        return "insert into %s( %s ) values (?)".formatted(getTableName(),
-                entityClassMetaDataClient.getAllFields().stream()
-                        .map(Field::getName)
-                        .collect(Collectors.joining(", ")));
+        var fields = entityClassMetaDataClient.getFieldsWithoutId().stream()
+                .map(Field::getName)
+                .collect(Collectors.joining(", "));
+        return "insert into %s( %s ) values ( %s )".formatted(getTableName(), fields, getAllParamsFiller());
+    }
+
+    private String getAllParamsFiller() {
+        return entityClassMetaDataClient.getFieldsWithoutId().stream()
+                .map(field -> "?").collect(Collectors.joining(", "));
     }
 
     @Override
     public String getUpdateSql() {
+        var fields = entityClassMetaDataClient.getFieldsWithoutId().stream()
+                .map(Field::getName)
+                .map(s -> s + " = ?")
+                .collect(Collectors.joining(", "));
         return "update %s set %s where %s = ?".formatted(getTableName(),
-                entityClassMetaDataClient.getFieldsWithoutId().stream()
-                        .map(Field::getName)
-                        .map(s -> s + " = ?")
-                        .collect(Collectors.joining(", ")),
+                fields,
                 getIdName());
     }
 }
