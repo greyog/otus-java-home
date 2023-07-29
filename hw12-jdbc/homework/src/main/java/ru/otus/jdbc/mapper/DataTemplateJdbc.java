@@ -39,10 +39,14 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
                     try {
                         if (rs.next()) {
                             List<Object> fieldsValues = new ArrayList<>();
+                            var fieldTypes = new ArrayList<Class<?>>();
                             for (Field field : entityClassMetaData.getAllFields()) {
                                 fieldsValues.add(rs.getObject(field.getName(), field.getType()));
+                                fieldTypes.add(field.getType());
                             }
-                            return entityClassMetaData.getConstructor().newInstance(fieldsValues.toArray());
+                            return entityClassMetaData
+                                    .getConstructor(fieldTypes.toArray(new Class[0]))
+                                    .newInstance(fieldsValues.toArray());
                         }
                         return null;
                     } catch (SQLException e) {
@@ -63,11 +67,15 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
                     List<T> resultList = new ArrayList<>();
                     try {
                         while (rs.next()) {
-                            var fieldsValues = new ArrayList<Object>();
+                            var fieldsValues = new ArrayList<>();
+                            var fieldTypes = new ArrayList<Class<?>>();
                             for (Field field : entityClassMetaData.getAllFields()) {
                                 fieldsValues.add(rs.getObject(field.getName(), field.getType()));
+                                fieldTypes.add(field.getType());
                             }
-                            var instance = entityClassMetaData.getConstructor().newInstance(fieldsValues.toArray());
+                            var instance = entityClassMetaData
+                                    .getConstructor(fieldTypes.toArray(new Class[0]))
+                                    .newInstance(fieldsValues.toArray());
                             resultList.add(instance);
                         }
                     } catch (SQLException e) {
@@ -81,23 +89,25 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
 
     @Override
     public long insert(Connection connection, T client) {
+        var params = new ArrayList<>();
+        for (Field field : entityClassMetaData.getFieldsWithoutId()) {
+            Object value = null;
+            try {
+                field.setAccessible(true);
+                value = field.get(client);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } finally {
+                field.setAccessible(false);
+            }
+            params.add(value);
+        }
+        var sql = entitySQLMetaData.getInsertSql();
+        System.out.println(sql + " | params: " + params);
         try {
             return dbExecutor.executeStatement(connection,
-                    entitySQLMetaData.getInsertSql(),
-                    entityClassMetaData.getAllFields().stream()
-                            .map(field -> {
-                                field.setAccessible(true);
-                                Object value = null;
-                                try {
-                                    value = field.get(client);
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                } finally {
-                                    field.setAccessible(false);
-                                }
-                                return value;
-                            })
-                            .toList());
+                    sql,
+                    params);
         } catch (Exception e) {
             throw new DataTemplateException(e);
         }
@@ -105,6 +115,25 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
 
     @Override
     public void update(Connection connection, T client) {
-        throw new UnsupportedOperationException();
+        var params = new ArrayList<>();
+        for (Field field : entityClassMetaData.getAllFields()) {
+            Object value = null;
+            try {
+                field.setAccessible(true);
+                value = field.get(client);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } finally {
+                field.setAccessible(false);
+            }
+            params.add(value);
+        }
+        try {
+            dbExecutor.executeStatement(connection,
+                    entitySQLMetaData.getUpdateSql(),
+                    params);
+        } catch (Exception e) {
+            throw new DataTemplateException(e);
+        }
     }
 }
