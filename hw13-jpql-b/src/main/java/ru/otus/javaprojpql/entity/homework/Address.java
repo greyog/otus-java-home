@@ -19,18 +19,15 @@ public class Address {
     private Long id;
 
     @Column
-    private String Street;
+    private String street;
 
+    @ToString.Exclude
     @OneToOne
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     public Address(String street) {
-        setStreet(street);
+        this.street = street;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-        client.setAddress(this);
-    }
 }

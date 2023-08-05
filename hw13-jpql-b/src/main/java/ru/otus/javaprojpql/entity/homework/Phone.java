@@ -21,6 +21,7 @@ public class Phone {
     @Column
     private String number;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
@@ -29,8 +30,8 @@ public class Phone {
         setNumber(number);
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-        client.addPhone(this);
-    }
+//    public void setClient(Client client) {
+//        this.client = client;
+//        client.addPhone(this);
+//    }
 }
