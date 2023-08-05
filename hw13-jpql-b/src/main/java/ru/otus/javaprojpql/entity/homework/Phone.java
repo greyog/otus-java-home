@@ -30,8 +30,4 @@ public class Phone {
         setNumber(number);
     }
 
-//    public void setClient(Client client) {
-//        this.client = client;
-//        client.addPhone(this);
-//    }
 }
