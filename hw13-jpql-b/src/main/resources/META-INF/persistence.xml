@@ -5,6 +5,10 @@
              version="2.1">
 
     <persistence-unit name="SingleUnit" transaction-type="RESOURCE_LOCAL">
+        <class>ru.otus.javaprojpql.entity.homework.Phone</class>
+        <class>ru.otus.javaprojpql.entity.homework.Client</class>
+        <class>ru.otus.javaprojpql.entity.homework.Address</class>
+
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/otus-db"/>
@@ -21,6 +25,7 @@
             <!--hibernate.hbm2ddl.auto = none - не производить никаких изменений-->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
+            <!--            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />-->
         </properties>
     </persistence-unit>
 </persistence>
