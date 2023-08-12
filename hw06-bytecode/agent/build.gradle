@@ -22,7 +22,7 @@ jar {
 }
 
 dependencies {
-    implementation project(':annotation')
+    implementation project(':hw06-bytecode:annotation')
 
     implementation 'org.javassist:javassist:3.29.2-GA'
 
