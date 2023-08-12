@@ -30,7 +30,7 @@ public class MessageDateReadDeserializer extends StdDeserializer<LocalDateTime> 
     @Override
     public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
         String value = p.getText();
-        if (!"".equals(value)) {
+        if (!value.isEmpty()) {
             long nano = Long.parseLong(value) + MAC_UNIX_NANO_TIME_OFFSET;
             return LocalDateTime.ofEpochSecond(nano / 1_000_000_000L,
                     (int) (nano % 1_000_000_000),
