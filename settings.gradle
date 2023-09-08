@@ -24,3 +24,5 @@ include 'hw09-1-patterns'
 include 'hw09-serialization'
 include 'hw12-jdbc'
 include 'hw13-jpql-b'
+include 'hw18-executors'
+
