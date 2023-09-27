@@ -12,11 +12,17 @@ import ru.otus.crm.model.Client;
 import ru.otus.crm.model.Phone;
 import ru.otus.crm.service.DbServiceClientImpl;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class DbServiceDemo {
 
     private static final Logger log = LoggerFactory.getLogger(DbServiceDemo.class);
 
     public static final String HIBERNATE_CFG_FILE = "hibernate.cfg.xml";
+
+    private static final int CLIENT_COUNT = 1000;
+    private static final int CLIENT_PHONES = 10;
 
     public static void main(String[] args) {
         var configuration = new Configuration().configure(HIBERNATE_CFG_FILE);
@@ -38,19 +44,35 @@ public class DbServiceDemo {
         var clientTemplate = new DataTemplateHibernate<>(Client.class);
 ///
         var dbServiceClient = new DbServiceClientImpl(transactionManager, clientTemplate);
-        dbServiceClient.saveClient(new Client("dbServiceFirst"));
 
-        var clientSecond = dbServiceClient.saveClient(new Client("dbServiceSecond"));
-        var clientSecondSelected = dbServiceClient.getClient(clientSecond.getId())
-                .orElseThrow(() -> new RuntimeException("Client not found, id:" + clientSecond.getId()));
-        log.info("clientSecondSelected:{}", clientSecondSelected);
+        var clientIds = new ArrayList<Long>();
+
+        var startTime = System.currentTimeMillis();
+        for (int i = 0; i < CLIENT_COUNT; i++) {
+            clientIds.add(dbServiceClient.saveClient(generateRandomClient()).getId());
+        }
+        log.info("clients persisted:{}", clientIds.size());
+
+        var clientsSelected = dbServiceClient.findAll();
+        log.info("clients Selected:{}", clientsSelected.size());
 ///
-        dbServiceClient.saveClient(new Client(clientSecondSelected.getId(), "dbServiceSecondUpdated"));
-        var clientUpdated = dbServiceClient.getClient(clientSecondSelected.getId())
-                .orElseThrow(() -> new RuntimeException("Client not found, id:" + clientSecondSelected.getId()));
-        log.info("clientUpdated:{}", clientUpdated);
+        clientsSelected.forEach(client -> {
+            client.setName("New name is " + UUID.randomUUID() );
+            dbServiceClient.saveClient(client);
+        });
 
-        log.info("All clients");
-        dbServiceClient.findAll().forEach(client -> log.info("client:{}", client));
+        var endTime = System.currentTimeMillis();
+
+        log.info("Time elapsed: {}", endTime - startTime);
+    }
+
+    private static Client generateRandomClient() {
+        var phones = new ArrayList<Phone>();
+        for (int i = 0; i <= CLIENT_PHONES; i++) {
+            phones.add(new Phone(UUID.randomUUID().toString()));
+        }
+        return new Client(null, "My name " + UUID.randomUUID(),
+                new Address("Street " + UUID.randomUUID()),
+                phones);
     }
 }
