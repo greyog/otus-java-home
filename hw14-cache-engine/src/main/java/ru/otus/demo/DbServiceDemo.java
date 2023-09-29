@@ -10,6 +10,7 @@ import ru.otus.crm.dbmigrations.MigrationsExecutorFlyway;
 import ru.otus.crm.model.Address;
 import ru.otus.crm.model.Client;
 import ru.otus.crm.model.Phone;
+import ru.otus.crm.service.CachedDbServiceClientImpl;
 import ru.otus.crm.service.DbServiceClientImpl;
 
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class DbServiceDemo {
 ///
         var clientTemplate = new DataTemplateHibernate<>(Client.class);
 ///
+//        var dbServiceClient = new CachedDbServiceClientImpl( new DbServiceClientImpl(transactionManager, clientTemplate)); при использовании MyCache отключить hibernate.cache.use_second_level_cache
         var dbServiceClient = new DbServiceClientImpl(transactionManager, clientTemplate);
 
         var clientIds = new ArrayList<Long>();
@@ -51,10 +53,14 @@ public class DbServiceDemo {
         for (int i = 0; i < CLIENT_COUNT; i++) {
             clientIds.add(dbServiceClient.saveClient(generateRandomClient()).getId());
         }
-        log.info("clients persisted:{}", clientIds.size());
 
-        var clientsSelected = dbServiceClient.findAll();
-        log.info("clients Selected:{}", clientsSelected.size());
+        var clientsSelected = new ArrayList<Client>();
+        for (Long clientId : clientIds) {
+            var client = dbServiceClient.getClient(clientId).orElse(null);
+            if (client != null) {
+                clientsSelected.add(client);
+            }
+        }
 ///
         clientsSelected.forEach(client -> {
             client.setName("New name is " + UUID.randomUUID() );
@@ -63,6 +69,8 @@ public class DbServiceDemo {
 
         var endTime = System.currentTimeMillis();
 
+        log.info("clients persisted:{}", clientIds.size());
+        log.info("clients Selected:{}", clientsSelected.size());
         log.info("Time elapsed: {}", endTime - startTime);
     }
 

@@ -43,6 +43,6 @@ public class DataTemplateHibernate<T> implements DataTemplate<T> {
 
     @Override
     public T update(Session session, T object) {
-        return session.merge(object);
+        return (T) session.merge(object);
     }
 }

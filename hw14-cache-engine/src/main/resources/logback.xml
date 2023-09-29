@@ -8,9 +8,22 @@
         </encoder>
     </appender>
 
-    <!--<logger name="org.hibernate.SQL" level="ERROR"/>-->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>hw14-cache-engine/test_with_ehcache.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate.SQL" level="ERROR"/>
     <logger name="org.hibernate" level="ERROR"/>
     <logger name="ch.qos.logback" level="ERROR"/>
+    <logger name="org.hibernate.cache" level="INFO"/>
+
+    <logger name="ru.otus.demo.DbServiceDemo" level="INFO">
+        <appender-ref ref="FILE"/>
+    </logger>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
