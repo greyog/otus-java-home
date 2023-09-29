@@ -1,0 +1,3 @@
+14980 [main] INFO  ru.otus.demo.DbServiceDemo - clients persisted:1000
+14981 [main] INFO  ru.otus.demo.DbServiceDemo - clients Selected:1000
+14981 [main] INFO  ru.otus.demo.DbServiceDemo - Time elapsed: 13847
