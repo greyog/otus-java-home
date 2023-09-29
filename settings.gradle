@@ -27,4 +27,5 @@ include 'hw13-jpql-b'
 include 'hw18-executors'
 include 'hw13-jpql-c'
 include 'hw14-cache-engine'
+include 'hw15-web-server'
 
