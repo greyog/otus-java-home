@@ -1,0 +1,31 @@
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="SingleUnit" transaction-type="RESOURCE_LOCAL">
+        <class>ru.otus.javaprojpql.entity.homework.Phone</class>
+        <class>ru.otus.javaprojpql.entity.homework.Client</class>
+        <class>ru.otus.javaprojpql.entity.homework.Address</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/otus-db"/>
+            <property name="jakarta.persistence.jdbc.user" value="user"/>
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
+
+            <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
+            <!--            PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect'-->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!--hibernate.hbm2ddl.auto = create - создавать схему заново, удаляя имеющуюся и все данные-->
+            <!--hibernate.hbm2ddl.auto = update - обновить схему при наличии несоответстий с БД и сохранить данные-->
+            <!--hibernate.hbm2ddl.auto = create-drop - аналогично create + удалить схему после -->
+            <!--hibernate.hbm2ddl.auto = validate - провалидировать схему и выбросить исключение при несоответствии-->
+            <!--hibernate.hbm2ddl.auto = none - не производить никаких изменений-->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <!--            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />-->
+        </properties>
+    </persistence-unit>
+</persistence>

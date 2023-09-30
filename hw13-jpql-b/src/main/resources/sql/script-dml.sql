@@ -1,0 +1,32 @@
+INSERT INTO CATEGORIES (ID, NAME) VALUES (gen_random_uuid (), 'Development');
+INSERT INTO CATEGORIES (ID, NAME) VALUES (gen_random_uuid (), 'Architecture');
+INSERT INTO CATEGORIES (ID, NAME) VALUES (gen_random_uuid (), 'DevOps');
+INSERT INTO CATEGORIES (ID, NAME) VALUES (gen_random_uuid (), 'Analysis');
+INSERT INTO CATEGORIES (ID, NAME) VALUES (gen_random_uuid (), 'Design');
+
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Java Basic', 110, (SELECT ID FROM CATEGORIES WHERE NAME = 'Development'));
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Java Pro', 170, (SELECT ID FROM CATEGORIES WHERE NAME = 'Development'));
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Android Mobile', 150, (SELECT ID FROM CATEGORIES WHERE NAME = 'Development'));
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'IOs Mobile', 190, (SELECT ID FROM CATEGORIES WHERE NAME = 'Development'));
+
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Microservices', 200, (SELECT ID FROM CATEGORIES WHERE NAME = 'Architecture'));
+
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Docker', 70, (SELECT ID FROM CATEGORIES WHERE NAME = 'DevOps'));
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Ansible', 80, (SELECT ID FROM CATEGORIES WHERE NAME = 'DevOps'));
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Kubernates', 180, (SELECT ID FROM CATEGORIES WHERE NAME = 'DevOps'));
+
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'System Analysis', 140, (SELECT ID FROM CATEGORIES WHERE NAME = 'Analysis'));
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Business Analysis', 140, (SELECT ID FROM CATEGORIES WHERE NAME = 'Analysis'));
+
+INSERT INTO COURSES (ID, NAME, COST, CATEGORY_ID)
+VALUES (gen_random_uuid (), 'Figma', 200, (SELECT ID FROM CATEGORIES WHERE NAME = 'Design'));
