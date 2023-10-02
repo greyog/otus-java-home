@@ -1,4 +1,0 @@
-rootProject.name = 'hw12-jdbc'
-include 'demo'
-include 'homework'
-
