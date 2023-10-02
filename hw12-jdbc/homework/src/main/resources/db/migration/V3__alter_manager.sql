@@ -1,0 +1,1 @@
+ALTER TABLE manager RENAME COLUMN param TO param1
