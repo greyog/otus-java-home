@@ -29,4 +29,8 @@ include 'hw13-jpql-c'
 include 'hw14-cache-engine'
 include 'hw15-web-server'
 include 'hw21-webflux-chat'
+include 'hw21-webflux-chat:client-service'
+findProject(':hw21-webflux-chat:client-service')?.name = 'client-service'
+include 'hw21-webflux-chat:datastore-service'
+findProject(':hw21-webflux-chat:datastore-service')?.name = 'datastore-service'
 
